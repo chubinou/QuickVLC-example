@@ -1,12 +1,14 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlEngine>
+#include <QQuickWindow>
 
 int main(int argc, char *argv[])
 {
     // this important so we can call makeCurrent from our rendering thread
     QCoreApplication::setAttribute(Qt::AA_DontCheckOpenGLContextThreadAffinity);
-
+    QQuickWindow::setGraphicsApi(QSGRendererInterface::GraphicsApi::OpenGL);
+ 
     QApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
